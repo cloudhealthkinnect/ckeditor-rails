@@ -110,7 +110,7 @@ Ckeditor::Rails.configure do |config|
   # or set as black list: config.default_plugins - %w[about a11yhelp]
   config.assets_plugins = nil
 
-  # default is nil for all skins, or set as %w[moon]
+  # default is nil for all skins, or set as %w[moono]
   config.assets_skins = nil
 end
 ```
@@ -143,6 +143,14 @@ https://github.com/rails/turbolinks/#opting-out-of-turbolinks
     <div class="example" data-no-turbolink>
     ...
     </div>
+
+#### Asset Compilation Process Does Not Produce JS and/or CSS Files
+
+If you observe an issue (especially in Heroku environment) where asset compilation process skips JS and or CSS files, try adding the following line to `app/environments/production.rb` (or config file for the environment where you observe the issue):
+
+``` ruby
+config.assets.precompile += ['ckeditor/*']
+```
 
 ## License
 
